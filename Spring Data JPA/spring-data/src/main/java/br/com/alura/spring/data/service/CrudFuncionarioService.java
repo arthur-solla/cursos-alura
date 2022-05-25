@@ -65,7 +65,6 @@ public class CrudFuncionarioService {
 			}
 		}
 
-		salvar(scanner);
 	}
 	
 	private void salvar(Scanner scanner) {

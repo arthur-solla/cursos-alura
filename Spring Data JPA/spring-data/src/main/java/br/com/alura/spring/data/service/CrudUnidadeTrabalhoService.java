@@ -45,7 +45,6 @@ public class CrudUnidadeTrabalhoService {
 			}
 		}
 
-		salvar(scanner);
 	}
 	
 	public CrudUnidadeTrabalhoService(UnidadeTrabalhoRepository unidadeTrabalhoRepository) {
