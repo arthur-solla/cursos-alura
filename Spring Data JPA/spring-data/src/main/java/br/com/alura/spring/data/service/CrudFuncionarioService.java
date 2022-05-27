@@ -76,7 +76,7 @@ public class CrudFuncionarioService {
 		String nome = scanner.next();
 		
 		System.out.println("CPF do Funcionario: ");
-		String CPF = scanner.next();
+		String cpf = scanner.next();
 		
 		System.out.println("Salario do Funcionario: ");
 		Double salario = scanner.nextDouble();
@@ -91,7 +91,7 @@ public class CrudFuncionarioService {
 
         Funcionario funcionario = new Funcionario();
         funcionario.setNome(nome);
-        funcionario.setCPF(CPF);
+        funcionario.setCpf(cpf);
         funcionario.setSalario(salario);
         funcionario.setDataContratacao(LocalDate.parse(dataContratacao, formatter));
         Optional<Cargo> cargo = cargoRepository.findById(cargoId);
@@ -129,7 +129,7 @@ public class CrudFuncionarioService {
 		String nome = scanner.next();
 		
 		System.out.println("Novo CPF: ");
-		String CPF = scanner.next();
+		String cpf = scanner.next();
 		
 		System.out.println("Novo salario: ");
 		Double salario = scanner.nextDouble();
@@ -137,7 +137,7 @@ public class CrudFuncionarioService {
 		Funcionario funcionario = new Funcionario();
 		funcionario.setId(id);
 		funcionario.setNome(nome);
-		funcionario.setCPF(CPF);
+		funcionario.setCpf(cpf);
 		funcionario.setSalario(salario);
 		funcionarioRepository.save(funcionario);
 		System.out.println("Atualizado");
