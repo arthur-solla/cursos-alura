@@ -1,0 +1,47 @@
+<html>
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet"
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+	integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+	crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+		<div class="card" th:each="pedido : ${pedidos}">
+			<div class="card-header" th:text="${pedido.nomeProduto}">Nome
+				do produto</div>
+			<div class="card-body">
+				<div class="row">
+					<div class="col-12 col-sm-8 mb-3">
+						<div class="row">
+							<div class="col-md-5">
+								Valor: <span th:text="${pedido.valorNegociado}">200,99</span>
+							</div>
+							<div class="col-md-6">
+								Data de entrega: <span th:text="${pedido.dataDaEntrega}">10/06/2022</span>
+							</div>
+						</div>
+
+						<div>Produto</div>
+						<div>
+							<input class="form-control" th:value="${pedido.urlProduto}"
+								value="url do produto" />
+						</div>
+
+						<div>Descrição</div>
+						<div>
+							<textarea class="form-control" th:text="${pedido.descricao}">descrição do pedido</textarea>
+						</div>
+					</div>
+					<div class="col-12 col-sm-4">
+						<div>
+							<img class="img-thumbnail" th:src="${pedido.urlImagem}" src="">
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
