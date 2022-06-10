@@ -21,11 +21,10 @@ public class PedidosRest {
 	private PedidoRepository pedidoRepository;
 	
 	@GetMapping("aguardando")
-	public List<Pedido> getPedidosAguardandoOferta(){
+	public List<Pedido> getPedidosAguardandoOfertas() {
 		Sort sort = Sort.by("id").descending();
 		PageRequest paginacao = PageRequest.of(0, 10, sort);
 		
 		return pedidoRepository.findByStatus(StatusPedido.AGUARDANDO, paginacao);
 	}
-	
 }
