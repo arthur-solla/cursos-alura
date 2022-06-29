@@ -9,7 +9,7 @@ import br.com.alura.forum.modelo.Topico;
 import br.com.alura.forum.repository.TopicoRepository;
 
 public class AtualizacaoTopicoForm {
-
+	
 	@NotNull @NotEmpty @Length(min = 5)
 	private String titulo;
 	
@@ -33,12 +33,12 @@ public class AtualizacaoTopicoForm {
 	}
 
 	public Topico atualizar(Long id, TopicoRepository topicoRepository) {
-		Topico topico = topicoRepository.getReferenceById(id);
-		topico .setTitulo(this.titulo);
+		Topico topico = topicoRepository.getOne(id);
+		
+		topico.setTitulo(this.titulo);
 		topico.setMensagem(this.mensagem);
 		
 		return topico;
 	}
-	
 	
 }
