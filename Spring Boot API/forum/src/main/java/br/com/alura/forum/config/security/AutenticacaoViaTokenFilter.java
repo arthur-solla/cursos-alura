@@ -14,13 +14,12 @@ import org.springframework.web.filter.OncePerRequestFilter;
 import br.com.alura.forum.modelo.Usuario;
 import br.com.alura.forum.repository.UsuarioRepository;
 
-public class AutenticacaoViaTokenFilter extends OncePerRequestFilter{
-
+public class AutenticacaoViaTokenFilter extends OncePerRequestFilter {
+	
 	private TokenService tokenService;
 	private UsuarioRepository repository;
-	
-	
-	public AutenticacaoViaTokenFilter(TokenService tokenService,UsuarioRepository repository) {
+
+	public AutenticacaoViaTokenFilter(TokenService tokenService, UsuarioRepository repository) {
 		this.tokenService = tokenService;
 		this.repository = repository;
 	}
@@ -31,7 +30,7 @@ public class AutenticacaoViaTokenFilter extends OncePerRequestFilter{
 		
 		String token = recuperarToken(request);
 		boolean valido = tokenService.isTokenValido(token);
-		if(valido) {
+		if (valido) {
 			autenticarCliente(token);
 		}
 		
@@ -43,14 +42,14 @@ public class AutenticacaoViaTokenFilter extends OncePerRequestFilter{
 		Usuario usuario = repository.findById(idUsuario).get();
 		UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(usuario, null, usuario.getAuthorities());
 		SecurityContextHolder.getContext().setAuthentication(authentication);
-		
 	}
 
 	private String recuperarToken(HttpServletRequest request) {
 		String token = request.getHeader("Authorization");
-		if(token == null || token.isEmpty() || !token.startsWith("Bearer ")) {
+		if (token == null || token.isEmpty() || !token.startsWith("Bearer ")) {
 			return null;
 		}
+		
 		return token.substring(7, token.length());
 	}
 
